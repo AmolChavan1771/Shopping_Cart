@@ -1,10 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html th:replace="~{base :: Layout(~{::section})}">
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
 </head>
+
 <body>
-<h1>Login Page</h1>
+    <section>
+        <div class="container mt-5 p-5 ">
+            <div class="row">
+                <div class="col-md-5 mt-5 p-5">
+                    <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
+                        <div class="card-header">
+                            <p class="fs-4 text-center">Log In</p>
+                        </div>
+                        <div class="card-body">
+                            <form action="">
+                                <div class="mb-3 ">
+                                    <label for="" class="form-label">Email</label>
+                                    <input type="email" name="email" class="form-control">
+                                </div>
+                                <div class="mb-3 ">
+                                    <label for="" class="form-label">Password</label>
+                                    <input type="password" name="password" class="form-control">
+                                </div>
+                                <button type="submit" class="btn bg-primary text-white col-md-12">Log In</button>
+                            </form>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a href="/" class="text-decoration-name">Forget Password</a><br>
+                            Don't Have an Account
+                            <a href="/" class="text-decoration-name">Create account</a>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-md-7 p-5">
+                    <img src="img/loginImage.png" width="130%" height="650px" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
+
 </html>
