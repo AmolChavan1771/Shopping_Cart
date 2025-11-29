@@ -1,69 +1,99 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" 
-th:replace="~{base::Layout(~{::section})}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::Layout(~{::section})}">
 
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
 </head>
-<body>
-		<section>
-		<div class="container-fluid  p-5 mt-5">
-		<div class="row">
-		<div class="col-md-3">
-		<div class="card card-sh ">
-		<div class="card-header text-center fs-4">Add Category</div>
-		<div class="card-body">
-		<form>
-		<div class="mb-3">
-		<label>Enter Category</label>
-		<input type="text" class="form-control">
-		
-		<div class="mb-3 col">
-		<label>Upload Image</label>
-		<input type="file" class="form-control">
-		</div>
-		
-		</div>
-		</form>
-		</div>
-		</div>
-		</div>
-		<div class="col-md-8">
-		<div class="card card-sh">
-		<div class="card-header text-center fs-4">Category Details</div>
-		<div class="card-body">
-		
-		<table class="table">
-  <thead>
-    <tr>
-       <th scope="col">S1 No</th>
-      <th scope="col">Category</th>
-      <th scope="col">Images</th>
-      <th scope="col">Action</th>
 
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    
-  </tbody>
-</table>
-		
+<body>
+	<section>
+		<div class="container-fluid  p-5 mt-5">
+			<div class="row">
+				<div class="col-md-3">
+					<div class="card card-sh ">
+						<div class="card-header text-center ">
+							<p class="fs-4">Add Category</p>
+							<th:block th:if="${session.successMessage}">
+								<p class="text-success fw-bold">[[${session.successMessage}]]</p>
+								<th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+							</th:block>
+							<th:block th:if="${session.errorMessage}">
+								<p class="text-danger fw-bold">[[${session.errorMessage}]]</p>
+								<th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+							</th:block>
+						</div>
+						<div class="card-body">
+							<form action="/admin/saveCategory" method="post" enctype="multipart/form-data">
+								<div>
+									<div class="mb-3">
+										<label>Enter Category</label>
+										<input type="text" class="form-control " name="name">
+									</div>
+									<div class="mb-3">
+										<label>Status</label>
+										<div class="form-check">
+											<input class="form-check-input" type="radio" name="isActive" value="true"
+												id="radioDefault1" checked>
+											<label class="form-check-label" for="radioDefault1">
+												Active
+											</label>
+										</div>
+										<div class="form-check">
+											<input class="form-check-input" type="radio" name="isActive" value="false"
+												id="radioDefault2">
+											<label class="form-check-label" for="radioDefault2">
+												Inactive
+											</label>
+										</div>
+									</div>
+									<div class="mb-3 col">
+										<label>Upload Image</label>
+										<input type="file" class="form-control" name="file">
+									</div>
+
+								</div>
+								<button class="btn btn-primary col-md-12 mt-2">Save</button>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8">
+					<div class="card card-sh">
+						<div class="card-header text-center fs-4">Category Details</div>
+						<div class="card-body">
+
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">S1 No</th>
+										<th scope="col">Category</th>
+										<th scope="col">Images</th>
+										<th scope="col">Action</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="row">1</th>
+										<td>Mark</td>
+										<td>Otto</td>
+										<td>@mdo</td>
+									</tr>
+
+								</tbody>
+							</table>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
 		</div>
-		</div>
-		
-		</div>
-		</div>
-		</div>
-		
-		</section>
+
+	</section>
 
 
 </body>
+
 </html>
